@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/lib/umd/single-spa.js"></script>
+    <script>
+        //参数 1） 注册应用的名称
+        // 2)加载app的方法必须是一个promise方法
+        singleSpa.registerApplication('app1',
+            async () => {
+            // 这个函数需要返回结果
+                return  {
+                    bootstrap: async () => {
+
+                    },
+                    mount: async () => {
+
+                    },
+                    unmount: async ()=>{
+                        
+                    }
+                }
+            },
+            location => location.hash.startsWith('/vue'),
+            {store: {name:'yanessa',age:18}}
+        )
+        // registerApplication默认会加载应用
+        // start时会挂载应用
+
+        singleSpa.start()
+    </script>
+   
+</body>
+</html>
